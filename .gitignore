@@ -1,0 +1,7 @@
+# Packages
+__pycache__ 
+
+
+venv
+.env 
+.idea 
