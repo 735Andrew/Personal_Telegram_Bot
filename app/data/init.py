@@ -27,7 +27,8 @@ def get_db():
             user_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
             user_login VARCHAR(32) UNIQUE NOT NULL,
             user_password TEXT NOT NULL,
-            user_name TEXT NOT NULL
+            user_name TEXT NOT NULL,
+            user_auth_token TEXT 
         );
         """
     )

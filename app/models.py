@@ -7,7 +7,14 @@ class LogInSchema(BaseModel):
     password: str = Field(min_length=5)
 
 
+class AuthTokenSchema(BaseModel):
+    auth_token: Optional[str] = None
 
-class UserSchema(LogInSchema):
+
+class UserSchema(LogInSchema, AuthTokenSchema):
     u_id: Optional[int] = None
     name: str
+
+
+class BotTokenSchema(BaseModel):
+    bot_token: str
