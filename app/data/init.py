@@ -2,8 +2,8 @@
 
 import psycopg2 as ps
 from typing import Optional
-from config import POSTGRESQL_DATABASE_PASSWORD
-
+from config import POSTGRESQL_DATABASE_URL
+from time import  sleep
 
 connection: Optional = None
 cursor: Optional = None
@@ -12,12 +12,8 @@ cursor: Optional = None
 def get_db():
     global connection, cursor
 
-    connection = ps.connect(
-        host="localhost",
-        dbname="Personal_Telegram_Bot",
-        user="postgres",
-        password=POSTGRESQL_DATABASE_PASSWORD,
-    )
+    sleep(5)
+    connection = ps.connect(POSTGRESQL_DATABASE_URL)
     cursor = connection.cursor()
 
     cursor.execute(

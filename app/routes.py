@@ -2,9 +2,19 @@ from fastapi import APIRouter, HTTPException, Header
 from app.models import UserSchema, LogInSchema, BotTokenSchema
 from app.data.user import user_create, get_one, check_token_validity
 from app.errors import Missing, Duplicate
-from app.bot import telegram_bot_creation
+from app.bot import main
 from typing import Dict
+import asyncio
+from functools import wraps
 from passlib.context import CryptContext
+
+
+def sync_to_async(f):
+    @wraps(f)
+    async def wrapper(*args, **kwargs):
+        return await asyncio.to_thread(f, *args, **kwargs)
+
+    return wrapper
 
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -29,13 +39,17 @@ def user_log_in(user: LogInSchema) -> Dict:
         raise HTTPException(status_code=404, detail=exc.msg)
 
 
+check_token_validity_async = sync_to_async(check_token_validity)
+
+
 @router.post("/bot_connect")
-def user_create_bot(
+async def user_create_bot(
     bot_token: BotTokenSchema,
     auth_token: str = Header(alias="auth_token"),
 ):
     try:
-        check_token_validity(auth_token)
-        telegram_bot_creation(bot_token.bot_token)
+        user = await check_token_validity_async(auth_token)
+        asyncio.create_task(main(bot_token.bot_token))
+        return {"bot_connection": "success"}
     except Missing as exc:
         raise HTTPException(status_code=401, detail=exc.msg)
