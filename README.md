@@ -21,7 +21,7 @@ FastApi, PostgreSQL, Docker, Pytest, Aiogram
 ```
 <br>
 Create a <b>.env</b> file in the root directory with the following variables: <br>
-<b><span style="color:orange;">/app/.env</span></b>
+<b>/Personal_Telegram_Bot/.env</b>
 
 ```commandline 
     POSTGRES_USER = <USER_VARIABLE>
@@ -86,7 +86,7 @@ Response example:
 Request example:
 ```json
 {
-  "bot_token": "string" // You should take it from @BotFather
+  "bot_token": "string" # You should take it from @BotFather
 }
 ```
 Headers:
