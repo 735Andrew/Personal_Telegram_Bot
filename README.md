@@ -91,7 +91,7 @@ Request example:
 ```
 Headers:
 ```commandline
-access_token <token>
+auth_token <access_token>
 ```
 <br>
 Response example:
