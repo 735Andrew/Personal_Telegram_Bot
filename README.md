@@ -13,28 +13,28 @@
 FastApi, PostgreSQL, Docker, Pytest, Aiogram
 <hr> 
 <div>
-<h3>Docker Deploy on Windows</h3>
+<h3>Docker Deploy</h3>
 
 ```commandline
-    git clone https://github.com/735Andrew/Personal_Telegram_Bot 
-    cd Personal_Telegram_Bot   
+git clone https://github.com/735Andrew/Personal_Telegram_Bot 
+cd Personal_Telegram_Bot   
 ```
 <br>
 Create a <b>.env</b> file in the root directory with the following variables: <br>
 <b>/Personal_Telegram_Bot/.env</b>
 
 ```commandline 
-    POSTGRES_USER = <USER_VARIABLE>
-    POSTGRES_PASSWORD = <PASSWORD_VARIABLE>
-    POSTGRES_DB = <DB_VARIABLE>
-    POSTGRESQL_DATABASE_URL = postgresql://<USER_VARIABLE>:<PASSWORD_VARIABLE>@db:5432/<DB_VARIABLE>
-    JWT_SECRET_KEY = <JWT_VARIABLE>
+POSTGRES_USER = <USER_VARIABLE>
+POSTGRES_PASSWORD = <PASSWORD_VARIABLE>
+POSTGRES_DB = <DB_VARIABLE>
+POSTGRESQL_DATABASE_URL = postgresql://<USER_VARIABLE>:<PASSWORD_VARIABLE>@db:5432/<DB_VARIABLE>
+JWT_SECRET_KEY = <JWT_VARIABLE>
 ```
 <br>
 Open a terminal in the root directory and run the following command: 
 
 ```commandline
-    docker-compose up -d 
+docker-compose up -d 
 ```
 </div>
 <hr>
